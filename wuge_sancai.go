@@ -1,12 +1,24 @@
 package name_wuge
 
 import (
+	"strings"
+
 	"github.com/godcong/yi"
 )
 
 type WuGeSanCai struct {
 	sanCaiNum *yi.SanCaiNum
 	tianRenDi string //三才
+}
+
+func NewWuGeSanCai(sancai_num *yi.SanCaiNum) *WuGeSanCai {
+	wuGeSanCai := WuGeSanCai{
+		sanCaiNum: sancai_num,
+		tianRenDi: strings.Join([]string{yi.NumberWuXing(sancai_num.Tian),
+			yi.NumberWuXing(sancai_num.Ren), yi.NumberWuXing(sancai_num.Di)}, ""),
+	}
+
+	return &wuGeSanCai
 }
 
 //五格三才幸运信息

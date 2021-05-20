@@ -14,7 +14,7 @@ type WuGeDaYan struct {
 	ZongDaYan string
 }
 
-func (dy *WuGeDaYan) IsLucky(is_restrict bool) bool {
+func (dy *WuGeDaYan) IsLucky(filter_hard bool) bool {
 	var is_lucky bool = false
 
 	// ignore gd.TianDaYan
@@ -23,7 +23,7 @@ func (dy *WuGeDaYan) IsLucky(is_restrict bool) bool {
 		strings.Contains(dy.DiDaYan, "吉") && !strings.Contains(dy.DiDaYan, "凶") &&
 		strings.Contains(dy.ZongDaYan, "吉") && !strings.Contains(dy.ZongDaYan, "凶") {
 
-		if is_restrict {
+		if filter_hard {
 			if !strings.Contains(dy.ZongDaYan, "半") && !strings.Contains(dy.ZongDaYan, "平") &&
 				strings.Contains(dy.WaiDaYan, "吉") && !strings.Contains(dy.WaiDaYan, "凶") {
 				is_lucky = true
